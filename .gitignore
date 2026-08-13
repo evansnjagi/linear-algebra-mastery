@@ -9,6 +9,8 @@ __pychase__/
 *.pdf
 *.aux
 *.toc
+*.gz
+*.bak
 
 # System(Windows) folder settings
 .Thumbs.db

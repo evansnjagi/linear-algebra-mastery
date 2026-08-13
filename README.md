@@ -68,13 +68,3 @@ GitHub: https/GitHub.com/evansnjagi
 
 LinkedIn: linkedin.com/in/evanskarago
 
-
-
-
-
-
-
-
-
-
-

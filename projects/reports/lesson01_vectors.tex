@@ -1,0 +1,92 @@
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amsfonts, amssymb}
+
+% Title
+\title{Linear Algebra Mastery \\ \large Vectors and Vector Operations}
+\author{Evans N. Karago}
+\date{\today}
+
+% Begin Document
+\begin{document}
+\maketitle
+	\section{Introduction}
+		A vector is an ordered list of  numbers with both magnitude and direction. Vectors are very common in machine learning applications. Whenever a linear regression model is trained, the predictions are presented using vector-linear combination method e.g. $\hat y = w_1x_1 + w_2x_2 + \cdots + w_nx_n$. There are many other applications of vectors in real world, they are not just limited to linear regression modelling.  Some of them includes:
+		\begin{enumerate}
+			\item Scaling a feature, done in feature normalization
+			\item Understanding span of all possible predictions a model can make. 
+			\item Compute model weights, from $A\vec x = b$, given that $\vec x$ is a vector with the model weights. 
+		\end{enumerate}
+	
+	\section{Formal Definition}
+	\subsection{Vector addition}
+	
+	\[
+		\vec u + \vec v = \begin{pmatrix}
+		u_1 + v_1\\
+		u_2+ v_2\\
+		\vdots \\
+		u_n + v_n\\
+\end{pmatrix} \qquad 
+\text{Given that: } \vec u , \vec v \in \mathbb{R}^n			
+	\]
+	\textbf{Note: } Vector addition is \textit{commutative} meaning $\vec u + \vec v = \vec v + \vec u$\\[0.15in]
+	\subsection{Scalar multiplication}
+	\[
+	c\vec v = 
+	\begin{pmatrix}
+		cv_1 \\
+		cv_2\\
+		\vdots \\
+		cv_n\\
+	\end{pmatrix}	\qquad
+	\text{Given that: } c \in \mathbb{R}, \quad \vec v \in \mathbb{R}^n
+	\]
+
+Scalar multiplication meaning:
+\begin{enumerate}
+	\item If $c > 1$: Positive stretching
+	\item If $0 < c < 1$: Diminishing/shrinking vector
+	\item If $c < 0$: Flipping
+	\item If $c = 0$: Collapsing to a zero vector
+\end{enumerate}	
+
+	\subsection{Linear combination}
+	Scaling vectors and adding them together. 
+	\[
+		c_1\vec v_1 + c_2\vec v_2 + \cdots + c_n \vec v_n	
+	\]
+	\[
+		\text{Where: }	c_i \in \mathbb{R} \text{ and } \vec v_i \in \mathbb{R}^n
+	\]
+	
+	\subsection{Span}
+	Span is a set of all linear combinations of a set of vectors.
+	
+	\[
+		span\{\vec v_1 , \vec v_2\} = span \{c_1 \vec v_1 + c_2 v_2\mid c_i \in \mathbb{R}, \quad \vec v_i \in \mathbb{R}^n\}	
+	\]
+	
+Geometry explanation:
+\begin{enumerate}
+	\item Span of a non zero vector is a line through the origin.
+	\item Span of a two non-parallel vectors,  spans the entire $\mathbb{R}^2$ space.
+	\item Span of two parallel vectors is a line in $\mathbb{R}^2$
+\end{enumerate}
+	\section{Python Results}
+	Running the script with $\vec u = (1, 3)$ and $\vec v = (2, -1)$ produced $\vec v + \vec u  =  (3, 2)$, confirming commutative, $\vec v + \vec u = (3,2)$. The rank check confirmed that $\vec v_1 = (1,0)$ and $\vec v_2 = (0,1)$ spans $\mathbb{R}^2$. The two vectors are not parallel, so they provide new information and spans the entire plane. $\vec v_3 = (2, 4)$ and $\vec v_4 = (1,2)$ had a rank = 1, meaning that the two vectors are parallel, therefore the two vectors form a line in  $\mathbb{R}^2$.
+	
+	\section{ML Connection}
+	\begin{enumerate}
+		\item Adding features in a feature matrix 
+		\item Normalizing features
+		\item Presenting predictions from a linear regression model. Linear regression predictions is a linear combination of weights and feature vector e.g. $\hat y = w_1 x_1 + w_2 x_3 + \cdots + w_nx_n$
+		\item Span of a feature matrix should be the same as the one for target vector. If the target vector lies outside the span, no exact solution exists.
+	\end{enumerate}
+	
+	
+	\section{Reflection}
+Todays lesson reinforced my understanding of vectors as a fundamental building block for linear algebra and machine learning.  The concept I found challenging today was the formal notation of span. Specifically distinguishing between set label $span\{\vec v_1, \vec v_2\}$ and linear combinations $span\{c_1\vec v_1 + \cdot + c_n\vec v_n\}$. What fascinate me the most, is how linear regression model predictions are presented using linear combination of weights and features.
+\end{document}
