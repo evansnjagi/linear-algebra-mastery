@@ -1,12 +1,6 @@
-\# Linear Algebra Mastery
-
-
-
-\## Vectors
-
+# Linear Algebra Mastery
+## Vectors
 A vector is an ordered list of finite real numbers. There are different types of vectors. Some of them are:
-
-
 
 1. Unit vector
 2. Standard unit vector
