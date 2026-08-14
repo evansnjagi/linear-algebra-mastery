@@ -6,7 +6,6 @@ __pychase__/
 # LaTeX
 *.out
 *.log
-*.pdf
 *.aux
 *.toc
 *.gz
