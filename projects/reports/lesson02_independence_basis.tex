@@ -14,8 +14,8 @@
 \maketitle
 
 \section{Introduction}
-A set of n-vectors $\vec v_1, \vec v_2, \cdots , \vec v_n$ are linearly independent if the only solution to $c_1\vec v_1 + c_2 \vec v_2 + \cdots + c_n\vec v_n$ is zero, and $c_1 = c_2 = \cdots = c_n = 0$ where $c_i \in \mathbb{R}$. If any $c_i  \neq 0$, then the vectors are \textit{linearly dependent}. In machine learning, dependent vectors carry redundant information. This causes multicollinearity, rendering the model weights unstable.\\[0.15in]
-A basis is the minimum set of vectors that are linearly independent and span the entire space, meaning the vectors can reach every point in space. The number of basis vectors are equal to the TRUE \textit{dimensionality} of a dataset.
+A set of n-vectors $\vec v_1, \vec v_2, \cdots , \vec v_n$ are linearly independent if the only solution to $c_1\vec v_1 + c_2 \vec v_2 + \cdots + c_n\vec v_n = 0$, and $c_1 = c_2 = \cdots = c_n = 0$ where $c_i \in \mathbb{R}$. If any $c_i  \neq 0$, then the vectors are \textit{linearly dependent}. In machine learning, dependent vectors carry redundant information. This causes multicollinearity, rendering the model weights unstable.\\[0.15in]
+A basis is the minimum set of vectors that are linearly independent and span the entire space, meaning the vectors can reach every point in space. The number of vectors in a basis is equal to the TRUE \textit{dimensionality} of a dataset.
 \section{Formal Definitions}
 
 \subsection{Linear Independence}
@@ -36,10 +36,11 @@ If $c_i \neq 0$, then the set of vectors is said to be linearly dependent.\\[0.1
 \item Linear dependence - Redundant vector(s) present, causes multicollinearity.
 \end{enumerate}
 \subsection{Basis}
-For a set of vectors to be a basis vector the following two properties must hold:
+For a set of vectors to be a basis  the following two properties must hold:
 \begin{enumerate}
 \item Vectors must be linearly independent
 \item Span the entire space. The vectors must reach every point in that space
+\item A basis for $\mathbb{R}^n$ has exactly n vectors.
 \end{enumerate}
 
 \subsection{Standard Basis}
@@ -98,14 +99,14 @@ Then;
 \[
 	1\cdot \vec 0 + 0 \cdot \vec v_1 + 0 \cdot \vec v_2 + \cdots + 0 \cdot \vec v_n = \vec 0
 \]
-The above equation shows that  there exist $c_i$'s that are not all zeros. In conclusion, $\{\vec 0, \vec v_1, \cdots , \vec v_n\}$ is a linearly dependent set.
-
+The above equation shows that  there exist $c_i$'s that are not all zeros. In conclusion, $\{\vec 0, \vec v_1, \cdots , \vec v_n\}$ is a linearly dependent set.\\[0.15in]
+\hfill $\blacksquare$
 \section{Python Results}
 
 \subsection{Linear Independence Check}
 Vector $v_1 = (1, 2)$ and $v_2 = (3, 5)$. The rank for the two stacked vectors is $2$, meaning that every point in $\mathbb{R}^2$ is reachable, hence linearly independent.
 \subsection{Linear Dependence Check}
-Vectors $v_3 = (2, 4)$ and $v_4 = (1, 2)$ are linearly dependent with rank = 1. This means that atleast one of the vectors is redundant.
+Vectors $v_3 = (2, 4)$ and $v_4 = (1, 2)$ are linearly dependent with rank = 1. This means that at least one of the vectors is redundant.
 \subsection{Standard Basis Verification}
 The rank for standard basis in $\mathbb{R}^2$ is $2$, while in $\mathbb{R}^3$ is $3$. This means that with standard basis vectors, you can reach every point in a vector space.
 
@@ -115,7 +116,7 @@ The feature matrix $X = \begin{pmatrix}
 	3 & 5\\
 	2 & 4\\
 \end{pmatrix}
-$ have a rank = $2$ when checking among features. With $2$ features present, it means that the columns are not redundant. Always  know what you are checking before interpreting rank, because columns and rows have different ranks. In our case, for example, At least one row is redundant. 
+$ have a rank = $2$ when checking among features. With $2$ features present, it means that the columns are not redundant. A matrix has one rank, however redundancy is interpreted differently depending on whether you are comparing rank against the number of rows(entries) or columns(features).
 \section{ML Connection}
 Before training a model, check for redundant features. Redundant features add no new information  causing multicollinearity, which makes a model weights to be unstable. 
 
