@@ -1,10 +1,10 @@
-\# Linear Algebra Mastery
+# Linear Algebra Mastery
 
 > linear algebra course built from core principles, follows a professional data science path, formal proofs, and real ML applications.
 
 
 
-\## Structure
+## Structure
 
 
 
@@ -42,7 +42,7 @@ Linear-algebra-mastery
 
 
 
-\## Tools
+## Tools
 
 
 
@@ -52,11 +52,11 @@ Linear-algebra-mastery
 
 
 
-\## Milestone projects
+## Milestone projects
 
 
 
-\## Author
+## Author
 
 
 
