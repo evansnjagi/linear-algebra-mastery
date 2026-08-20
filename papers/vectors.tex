@@ -1,0 +1,299 @@
+\documentclass[11pt]{article}
+
+% Use packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amsfonts, amssymb}
+
+% Title
+\title{Linear Algebra Mastery \\ 
+\large Vectors
+}
+\author{Evans N. Karago}
+\date{\today}
+
+% Main document
+\begin{document}
+\maketitle
+
+% Introduction
+\section{Introduction}
+A vector is an \textit{ordered} list of finite real number. The list must have both magnitude and direction. Here are some examples of vectors:
+\begin{enumerate}
+\item Location and displacement
+\item Colours 
+\item Images
+\item Video
+\item Audio
+\item Quantity
+\item Daily return of stock
+\item Stock portfolio and investment
+\item Time series and signals
+\item Word count and histogram
+\item Cash flow in and out an entity or organization
+\end{enumerate}
+There are different ways to write a vector. In this article,  a vector will be a lower case letters with an arrow at the top(e.g. $\vec v$),  a  scalar will be represented by a lower case letter without and arrow at the top(e.g. $v$) or in special cases with a Greek letter (e.g. $\beta$). 
+\section{Vector Operations}
+
+% Vector addition
+\subsection{Vector Addition}
+We add vectors component by component. e.g.  $\vec u + \vec v$
+
+\[
+\begin{pmatrix}
+u_1\\
+u_2\\
+\vdots \\
+u_n
+\end{pmatrix}
++
+\begin{pmatrix}
+v_1\\
+v_2\\
+\vdots\\
+v_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+u_1 + v_1\\
+u_2 + v_2\\
+\vdots\\
+u_n + v_n
+\end{pmatrix}
+\]
+Quick check:
+
+With the following vectors $\vec v = (1, 3)$ and $\vec u = (2, -1)$, compute $\vec v + \vec u$.
+
+\vspace{0.15in}
+\begin{center}
+\textbf{Solution:}
+\end{center}
+\[
+\vec v + \vec u = \begin{pmatrix}
+1 \\ 3
+\end{pmatrix}
++ 
+\begin{pmatrix}
+2 \\ -1
+\end{pmatrix}
+= 
+\begin{pmatrix}
+3 \\
+2
+\end{pmatrix}
+\]
+\subsubsection*{Properties}
+\begin{enumerate}
+\item Commutative: $\vec v + \vec u $ = $\vec u + \vec v$
+\item Associative: $\vec a ( \vec v + \vec u ) = (\vec a + \vec v) + \vec u$
+\item Adding a zero vector to any vector has no effect e.g $\vec v + 0 = \vec v$
+\item Subtracting a vector by itself yields a zero vector e.g. $\vec v - \vec v = 0`$
+\end{enumerate}
+
+% Scalar multiplication
+\subsection{Scalar Multiplication}
+A scalar is a \textit{real valued number}, sometimes coefficient of a vector. It's possible to scale a vector in ways we want, but before we get to that, below is a generalized way to scale a vector e.g. $\beta \vec v$
+
+\[
+\text{Let } \beta = c_1, c_2, \cdots, c_n \in \mathbb{R} \quad \text{and } \vec v  \in \mathbb{R}^n 
+\]
+
+\[
+\beta(\vec v) = \beta \begin{pmatrix}
+v_1\\
+v_2\\
+\vdots \\
+v_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+\beta v_1\\
+\beta v_2\\
+\vdots\\
+\beta v_n
+\end{pmatrix}
+\]
+Scaling a vector can lead to either of the following scenarios:
+\begin{enumerate}
+\item Stretching vector, this is true if $\beta > 1$
+\item Shrinking vector, if $0 < \beta < 1$
+\item Flipped vector, if $\beta = -1$
+\item Flipped and stretched vector, if $\beta < -1$
+\item Collapsed to zero vector, if $\beta = 0$
+\end{enumerate}
+Quick check:
+
+Suppose $\vec v = (3, 2, 1)$, compute $2\vec v$.
+
+\vspace{0.15in}
+
+\begin{center}
+\textbf{Solution: }
+\end{center}
+\[
+2\begin{pmatrix}
+3\\2\\1
+\end{pmatrix}
+= \begin{pmatrix}
+6\\4\\2
+\end{pmatrix}
+\]
+
+\subsubsection*{Properties}
+\begin{enumerate}
+\item Commutative: $\beta \vec v = \vec v \beta$, for some scalars $\beta$ and any vector $\vec v$
+\item Associative: $(\beta \alpha)\vec v = \beta (\alpha \vec v)$, for some scalars $\beta, \alpha$ and any vector $\vec v$
+\item Distributive: $(\beta + \alpha) \vec v = \beta \vec v + \alpha \vec v$
+\end{enumerate}
+
+% Linear combination
+\section{Linear Combination}
+Linear combination scales vectors and add them e.g. $c_1\vec v_1 + c_2\vec v_2 + \cdots + c_n \vec v_n$ give that, $c_i \in \mathbb{R}$ and $\vec v_i \in \mathbb{R}^n$. \\[0.1in]
+Quick check: 
+
+Given $\vec v_1 = (1, 2)$  and $\vec v_2 = (3, -1)$, compute $2\vec v_1 + 3 \vec v_2$
+
+\begin{center}
+\textbf{Solution:}
+\end{center}
+
+\[
+2\cdot
+\begin{pmatrix}
+1 \\ 2
+\end{pmatrix}
++
+3 \cdot
+\begin{pmatrix}
+3\\-1
+\end{pmatrix}
+=
+\begin{pmatrix}
+2 \\4
+\end{pmatrix}
++
+\begin{pmatrix}
+9 \\-3
+\end{pmatrix}
+=
+\begin{pmatrix}
+11\\ 1
+\end{pmatrix}
+\]
+\subsubsection*{Special Combinations}
+\begin{enumerate}
+\item $c_ 1 = c_2 = c_3 = \cdots = c_n = 1$, sum of all vectors
+\item $c_ 1 = c_2 = c_3 = \cdots = c_n = \frac{1}{n}$, Average of vectors.
+\end{enumerate}
+% Span
+\section{Span}
+Span is a set of all linear combinations of a set of vectors. e.g. 
+\[
+span\{\vec v_1, \vec v_2\} = \{c_1 \vec v_1, c_2 \vec v_2\mid c_i \in \mathbb{R}\}
+\]
+A span of two \textit{parallel} vectors in $\mathbb{R}^2$ is just a line, no new plane is formed, but if the vectors are not parallel, they will span the entire $\mathbb{R}^2$ plane.\\[0.1in]
+Quick check:
+
+Given $\vec v_ 1 = (1, 0)$ and $\vec v_2 = (0, 1)$, what is $span\{\vec v_1, \vec v_2\}$.
+
+\vspace{0.15in}
+\begin{center}
+\textbf{Solution:}
+\end{center}
+\[
+span\{\vec v_1, \vec v_2 \} = span\left\{c_1\begin{pmatrix}
+1 \\0
+\end{pmatrix},
+c_2 \begin{pmatrix}
+0 \\ 1
+\end{pmatrix} \right\}\text{Given } c_1, c_ 2\in \mathbb{R}
+\]
+There are two special linear combinations of vectors yielding the sum of a set of vectors and average of the same.
+\begin{enumerate}
+\item Sum of vectors, $\beta_1 \vec v_1 = \beta_2 \vec v_2  = \cdots =\beta_n \vec v_n = 1$, for some vectors $\vec v_i \in \mathbb{R}^n$ and any scalars $\beta_i \in \mathbb{R}$.
+\item Average of vectors, $\beta_1 \vec v_1 = \beta_2 \vec v_2 = \cdots = \beta_n \vec v_n = \frac{1}{n}$, for $\vec v_i \in \mathbb{R}^n  \text{ and } \beta_i \in \mathbb{R}$
+\end{enumerate}
+% Linear independence
+\section{Linear Independence}
+A collection or a list of n-vectors is said to be linearly independent if $\beta_1 \vec v_1 + \beta_2 \vec v_2 + \cdots + \beta_n \vec v_n = 0$, for all $\beta_i  = 0$.\\[0.1in]
+Quick check:
+
+Given $\vec v_1  = (1,2)$ and $\vec v_2 = (3, 5)$, determine if they are linearly independent.
+
+\vspace{0.15in}
+\begin{center}
+\textbf{Solution:}
+\end{center}
+Recall: $\beta_1 \vec v_1 +\beta_2 \vec v_2+  \cdots + \beta_n \vec v_n = 0$
+\[
+\beta_1 \begin{pmatrix}
+1 \\ 2
+\end{pmatrix} + \beta_2 \begin{pmatrix}
+3 \\ 5
+\end{pmatrix}
+= 0
+\]
+
+\begin{align}
+ \beta_1 + 3 \beta_2 & = 0\\
+ 2 \beta_1 + 5 \beta_2 &= 0
+\end{align}
+
+\begin{align*}
+2 \beta_1 + 6 \beta_2 & = 0\\
+ 2 \beta_1 + 5 \beta_2 &= 0\\
+ \implies \beta_2 = 0 \text{ and } \beta_1 = 0 
+\end{align*}
+% Linear dependence
+\section{Linear dependence}
+A collection of n-vectors is linearly dependent if $\beta_1 \vec v_1 + \beta_2 \vec v_2 + \cdots + \beta_n \vec v_n = 0$, for some scalars $\beta_i$ not all zeros.\\[0.1in]
+A collection of n-vectors containing the zero vector is always linearly dependent.\\[0.1in]
+\textbf{Proof}:\\[0.1in]
+Let $
+S = \{\vec v_1, \vec v_2, \cdots \vec v_n\} \text{ and } \vec v_k  \in S \text{ such that } v_k = 0
+$\\
+Linear combination is given as 
+\[\beta_1 \vec v_1 + \cdots + \beta_k \vec v_k + \cdots + \beta_n \vec v_n = 0
+\]
+Dividing by $\beta_k$
+\[\frac{\beta_1}{\beta_k}\vec v_1 + \cdots + \vec v_k + \cdots + \frac{\beta_n}{\beta_k}\vec v_n = 0
+\]
+Finding $\vec v_k$
+\[
+\vec v_k =                                      -\left(\frac{\beta_1}{\beta_k}\right)\vec v_ 1 +  -\left(\frac{\beta_2}{\beta_k}\right)\vec v_ 2 +\cdots + -\left(\frac{\beta_{k-1}}{\beta_k}\right)\vec v_ {k -1} +-\left(\frac{\beta_{k + 1}}{\beta_k}\right)\vec v_ {k + 1} +\cdots +
+-\left(\frac{\beta_n}{\beta_k}\right)\vec v_ n 
+\]
+From the equation above, it's evident that not all $\beta_i$ are all equal to zero, hence we can construct a new zero vector, which is redundant.
+% Basis
+\section{Basis}
+A basis is a collection of n-vectors that are linearly independent and spans the entire space. Every vector in the space is reachable. Examples of a standard basis:
+\[e_1 = \begin{pmatrix}
+1 \\ 0 
+\end{pmatrix} \qquad 
+e_2 = 
+\begin{pmatrix}
+0 \\ 1
+\end{pmatrix}
+\]
+\textbf{Proof:}\\[0.15in]
+Suppose we have a collection of $n + 1$ n-vectors, given as 
+$
+S =
+\{ 
+\vec v_1, \vec v_2, \cdots , \vec v_n, \vec u \}$. The set  $S$ is linearly dependent, meaning that not all $\beta_i \neq 0$. \\[0.1in]
+If we have
+\[
+\beta_1 \vec v_1 + \beta_2 \vec v_2 + \cdots + \beta_n \vec v_n + \beta_{n+1} \vec v_{n+1} = 0
+\]
+Then, $\beta_{n +1} = 0$, a contradiction for linear dependence.
+% Machine learning application
+\section{Machine Learning Application}
+\begin{enumerate}
+\item In machine learning, vectors can be represented by NumPy arrays.
+\item Stretching, collapsing, or flipping a vector is a common practice while dealing with images, training neural network models.
+\item Linear regression models, return their predictions as a linear combination of model weights and the target vector.
+\item Multicollinearity causes a model prediction to be unstable. A collection of vectors that are linearly dependent causes multicollinearity.
+\item Span tells us the true dimensionality of a set of vectors. A target vector should lie within the span, otherwise no exact solution will exist.
+\end{enumerate}
+
+\end{document}
