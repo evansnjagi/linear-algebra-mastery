@@ -1,0 +1,72 @@
+"""
+    Linear Algebra Mastary
+    ---------------------
+    Lesson 3: Matrices
+"""
+# Import 
+import numpy as np
+
+# Define a matrix
+A =  np.array([[1, 2], [3, 4]])
+
+B = np.array([[2, 1, 4], [3, 0, 5]])
+
+# print
+print("=== Matrices ===")
+print(f"A = \n{A}")
+print(f"Shape of A: {A.shape}")
+print(f"B = \n{B}")
+print(f"Shape of B: {B.shape}")
+print(f"Entry b[1][2]: {B[1][2]}")
+
+# Matrix vector multiplication
+x = np.array([2, 1])
+
+# Method one, Using numpy operator
+Ax = A @ x
+
+# Method two, Column combination manual
+first_col = A[:,0]
+second_col = A[:,1]
+
+Ax_manual = first_col * x[0] + second_col * x[1]
+
+print("\n=== Matrix-vector multiplication ===\n")
+print(f"A = \n{A}")
+print(f"x = {x}")
+print(f"Ax (NumPy): {Ax}")
+print(f"Ax (Manual): {Ax_manual}")
+print(f"Both methods match {np.array_equal(Ax, Ax_manual)}")
+
+# Matrix multiplication
+
+A = np.array([[1, 2],
+              [3, 4]])
+
+B = np.array([[2, 0],
+              [1, 3]])
+
+# Method one (NumPy)
+AB = A @ B
+
+# Method two (Manual)
+col1_B = B[:,0]
+col2_B = B[:,1]
+
+AB_col1 = A @ col1_B
+AB_col2 = A @ col2_B
+
+AB_manual = np.column_stack([AB_col1, AB_col2])
+
+print("\n=== Matrix Multiplication ===")
+print(f"A =\n{A}")
+print(f"B =\n{B}")
+print(f"AB (NumPy) =\n{AB}")
+print(f"AB (manual) =\n{AB_manual}")
+print(f"Both methods match: {np.array_equal(AB, AB_manual)}")
+
+# Verify AB ≠ BA
+BA = B @ A
+print(f"\nAB =\n{AB}")
+print(f"BA =\n{BA}")
+print(f"AB == BA: {np.array_equal(AB, BA)}")
