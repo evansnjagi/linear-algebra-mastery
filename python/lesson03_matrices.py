@@ -70,3 +70,23 @@ BA = B @ A
 print(f"\nAB =\n{AB}")
 print(f"BA =\n{BA}")
 print(f"AB == BA: {np.array_equal(AB, BA)}")
+
+
+# Machine learning connection - prediction of Ax
+# Feature matrix X with 3 data points and two features
+X = np.array([[1, 2], [3, 4], [5, 6]])
+
+# Weight vector
+w = np.array([0.5,  1.5])
+
+# Predictions
+predictions = X @ w
+
+print("\n=== Machine learning connection ===\n")
+print(f"Feature matrix: \n{X}")
+print(f"Weight vector = {w}")
+print(f"Predictions = {predictions}")
+print("\nBreak it down: ")
+for i, row in enumerate(X):
+    pred = np.dot(row, w)
+    print(f"Data point {i + 1} = {row} . {w} = {pred}")
