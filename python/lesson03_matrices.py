@@ -90,3 +90,29 @@ print("\nBreak it down: ")
 for i, row in enumerate(X):
     pred = np.dot(row, w)
     print(f"Data point {i + 1} = {row} . {w} = {pred}")
+
+# Transpose
+A = np.array([[2, 1, 4], [3, 0,  5]])
+
+A_T = A.T
+print("\n=== Transpose ===\n")
+print(f"A = \n{A}")
+print(f"Shape of A = {A.shape}")
+print(f"A transpose = \n{A_T}")
+print(f"Shape of A transpose = {A_T.shape}")
+
+# Key properties (AB)^T = (B^T)(A^T)
+B = np.array([[1, 2], [3, 4], [5, 6]])
+
+AB = A @ B
+
+print(f"(AB)^T = \n{AB.T}")
+print(f"B^T A^T = \n{B.T @ A.T}")
+print(f"(AB)^T = B^T A^T = {np.array_equal(AB.T, B.T @ A.T)}")
+
+# Symmetry example
+S = np.array([[1, 2, 3], [2, 5, 4], [3, 4, 6]])
+print("\n===Symmetrix matrix ===")
+print(f"S = \n{S}")
+print(f"S^T = \n{S.T}")
+print(f"S is symmetric = {np.array_equal(S, S.T)}")
