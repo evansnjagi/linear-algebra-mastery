@@ -73,7 +73,85 @@ The result is a scalar, telling us how much of vector $\mathbf{u}$ is pointing t
     - Spans the entire space. Every vector in the space can be reached.
 
 ### Proof
+A set of n-vectors is ALWAYS linearly dependent if it contains the zero vector. Here is the proof:
 
+Suppose $S = \{\mathbf{v_1}, \mathbf{v_2}, \mathbf{v_3}, \cdots \mathbf{v_n}\}$ is a set of n-vectors and $\mathbf{v_k} \in S$ is a zero vector.
+
+By defination, for linear independence to hold true, the following equation must be satisfied:
+$$
+    c_1 \mathbf{v_1} + 
+    c_2 \mathbf{v_2} +
+    \cdots +
+    c_n \mathbf{c_n}
+    = \mathbf{0}
+$$
+for some n-vectors $\mathbf{v_i} \in \mathbb{R}^n$ and any scalar $c_1, c_2, \cdots, c_n \in \mathbb{R}$. It follows that:
+
+$$
+    c_1\mathbf{v_1} + 
+    c_2 \mathbf{v_2} + 
+    \cdots +
+    c_k \mathbf{v_k} +
+    \cdots + 
+    c_n \mathbf{v_n} = 
+    \mathbf{0}
+$$
+Divide every component in the equation by $c_k$ and take the resultant equation to the right side of equal sign, leaving the zero vector $\mathbf{v_k}$ on the left side of the equation.
+$$
+    \frac{\mathbf{c_1}}{c_k} \mathbf{v_1} +
+    \frac{\mathbf{c_2}}{c_k} \mathbf{v_2} + 
+    \cdots + 
+    \frac{\mathbf{c_k}}{c_k} \mathbf{v_k} + 
+    \cdots + 
+    \frac{\mathbf{c_n}}{c_k} \mathbf{v_n}
+$$
+
+$$
+    
+    \mathbf{v_k} = 
+    \left(-\frac{\mathbf{c_1}}{c_k} \right)\mathbf{v_1} +
+    \left(-\frac{\mathbf{c_2}}{c_k} \right)\mathbf{v_2} + 
+    \cdots + 
+    \left(-\frac{\mathbf{c_n}}{c_k} \right)\mathbf{v_n}
+$$
+
+From the above equation, $\mathbf{v_k}$ is constructucted from other vectors through their linear combinations. It's a collection of other vectors. 
+
+Likewise, the scalars $c_i \in \mathbb{R}$, are not all zeros.
+
+Therefore, the set of vectors in $S$ are linearly dependent. ##Proved.
 ### Python implementation
+1. Vector definition - Use `np.array()` e.g. `np.array([1, 2])`. Here, NumPy is imported with an alias name **np**. 
+2. Vector addition - In Python, vectors are arrays of numbers. We can add them using the `+` symbol. e.g `np.array([1, 3]) + np.array([2, -1])`. Adding them we  get `[4, 2]` as the output.
+
+3.  Scalar multiplication - To scale a vector, you need to multiply an array with some number, in our case what we call a scalar. e.g. `2 * np.array([1, 3])` giving an output `[2, 6]`.
+
+4. Magnitude - To compute magnitude in Python, we use `np.linalg.norm([np.array([1, 3])])`. The resultant output  will be a single number i.e. `3.1623`
+
+5. Linear combination - A linear combination of a set of n-vectors is implemented by adding and scalling arrays. e.g `2 * np.array([1, 2]) + 3 * np.array([3, -1])`. The output is an array, `[11, 1]`.
+
+6. Span - Span give us true dimension of some set of vectors. To know spans, we have to compute the rank i.e `np.linalg.matrix_rank(np.column_stack(np.array([1, 0]), np.array([0, 1])))`. From the example, we first stack the two vectors together, then compute rank. In this case, rank for a set of basis vector in $\mathbb{R}^2$ is $2$.
+
+7. Linear independece - To compute linear independence, we first need to compute rank, then compare it with total number of stacked vectors or a matrix dimension. If both are equal, then the set is said to be linearly independence. Likewise, if the two: rank and dimension, varies, the set is said to be linearly dependent. Example `np.matrix_rank(np.column_stack(np.array([1, 2]), np.array([3, 5]), np.array([2, 4])))`. Here, rank = $2$ and number of vectors present = $3$, therefore, the set 
+$$
+    S = 
+    \left\{
+    \begin{pmatrix}
+        1 \\ 2
+    \end{pmatrix}, 
+    \begin{pmatrix}
+        3\\ 5
+    \end{pmatrix}, 
+    \begin{pmatrix}
+        2\\ 4
+    \end{pmatrix}
+    \right\}
+$$
+
+is linearly dependent, atleast one vector can be expressed as a linear combination of others.
 
 ### ML Connection
+1. A set of features, a feature matrix, may have redundant entries. Meaning that atleast one feature can be expressed as a linear combination of others. This causes *multicollinearlity* problem in Machine Learning. As a result, the model weights becomes unstable, leading to unstable model predictions.
+2. In feature normalization, vectors are scaled, either by stretching, flipping, shrink or collapse it completely.
+3. Number of basis vectors, gives the true dimension of data.
+4. Span of target vector, gives a set of all possible prediction a model can make. 
