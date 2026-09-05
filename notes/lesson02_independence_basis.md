@@ -63,5 +63,33 @@ $$
 There exist a nonzero solution for $c_i$, $c_k = 1$, therefore the set is linearly dependent. $\blacksquare$
 
 ### Python Implementation
+1. Linear independence - To check for linear independence in Python, follow the following steps:
+    
+    - Define your arrays using `np.array()`, having imported NumPy with alias `np`.
+    - Combine the arrays into a matrix, `np.column_stack()`.
+    - Using, `np.linalg.matrix_rank()`, compute rank of the matrix. Rank gives us the number of vectors that are linearly independent. Those that are pointing in different directions, geometrically.
+    - Compare rank with the total number of vectors used to compute rank.
+    - If $rank < \text{number of vectors}$, the set is linearly dependent. This means that there exist at least one vector that can be expressed as a linear combination of other vectors, redundant.
+2. Standard basis - Conceptually, with a set of n-standard unit vectors, you can construct any vector in that space. This is true because the set is linearly independent, there is NO redundant vector. To check this analogy in Python, follow the steps below:
+
+    - Define your set $S = \{e_1, e_2, \cdots, e_n\}$, a set of standard unit vectors i.e. 
+    $\left\{
+        \begin{pmatrix}
+            1 \\ 0
+        \end{pmatrix},
+        \begin{pmatrix}
+            0 \\ 1
+        \end{pmatrix}
+    \right\}$ is a set of standard unit vectors in $\mathbb{R}^2$. 
+    
+    - Using NumPy, stack the set of standard unit vectors together as a matrix.
+
+    - Compute the rank of the stacked matrix, use `np.linalg.matrix_rank()`.
+
+    - Compare the computed rank with the number of standard unit vectors, the two values should be the same.
+3. ML connection - In a machine learning project, there are two types of data: feature matrix, $\mathbf{X}$ and target vector, $\mathbf{y}$. You can check if your feature matrix has redundant rows or columns using NumPy, by computing rank.
 
 ### ML Connection
+In machine learning i.e. linear regression, to avoid multicollinearity we must make sure all features are linearly independent. If one feature can be derived from another, it makes the feature matrix, $\mathbf{X}$ non-invertible, and the model weights unstable or impossible to compute. 
+
+Removing linearly dependent or redundant features, from the feature matrix, shrinks the feature space, speeding training time. It also prevents overfitting by ensuring every input contribute distinct predictive power.
